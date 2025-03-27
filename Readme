@@ -1,0 +1,45 @@
+# Haskell Binary Search Tree Implementation
+
+This program implements a Binary Search Tree (BST) with support for duplicate values, different tree traversal algorithms, and a simple user interface. The implementation is divided into three main tasks:
+
+## Task A: Parse Input List
+The program prompts the user to enter a list of numbers separated by commas and parses this input into a list of integers.
+
+- Function: `parseInput`
+- Implementation: Converts a comma-separated string into a list of integers
+- Example: Input "5,3,7,5" is parsed to `[5,3,7,5]`
+
+## Task B: Create BST and Implement Classic Traversals
+The program constructs a Binary Search Tree from the input list and provides three classic tree traversal methods:
+
+- **BST Node Structure**: Each node contains a value,  and left and right subtrees
+- **Tree Creation**: Creates a balanced BST from the input list
+- **Classic Traversals**:
+  - Pre-order: Visit root, then left subtree, then right subtree
+  - In-order: Visit left subtree, then root, then right subtree
+  - Post-order: Visit left subtree, then right subtree, then root
+
+## Task C: Breadth-First Search (BFS) Implementation
+The program implements Breadth-First Search traversal on the constructed BST:
+
+- **BFS Algorithm**: Uses a queue (implemented with Data.Sequence) to traverse the tree level by level
+- **Output**: Prints all node values in BFS order
+
+## Key Features
+
+- **Multiple Traversals**: Supports four different traversal methods
+- **User Interface**: Simple command-line interface for input
+- **Formatted Output**: Results are displayed as comma-separated lists
+
+## Usage
+
+1. Run the program: `runhaskell BST.hs` or compile with `ghc BST.hs` and run the executable
+2. When prompted, enter numbers separated by commas (e.g., "5,3,7,5,10,3")
+3. The program will display all four traversals of the resulting BST
+
+## Implementation Notes
+
+- The BST is not self-balancing, so tree structure depends on insertion order
+- All traversal functions ignore any duplicate entry , and does not insert again 
+- The implementation uses Haskell's functional programming paradigm with recursive algorithms
+- doesnt handle error , decimal , so expect a valid sequence 

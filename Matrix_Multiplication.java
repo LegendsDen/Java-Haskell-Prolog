@@ -8,7 +8,6 @@ class Calculation extends Thread {
     int[][] b;
     int row;
 
-
     public Calculation(int[][] a, int[][] b, int[][] result, int row) {
         this.a = a;
         this.b = b;
@@ -16,31 +15,12 @@ class Calculation extends Thread {
         this.row = row;
     }
 
-
     public void run() {
         for (int i = 0; i < b[0].length; i++) {
             result[row][i] = 0;
             for (int j = 0; j < a[row].length; j++) {
                 result[row][i] += a[row][j] * b[j][i];
             }
-        }
-    }
-}
-
-class Initialize extends Thread {
-    int[][] a;
-    int row;
-
-
-    public Initialize(int[][] a, int row) {
-        this.a = a;
-        this.row = row;
-    }
-
-
-    public void run() {
-        for (int i = 0; i < a.length; i++) {
-            a[row][i] = (int) (Math.random() * 11); // Generate elements between 0 and 10
         }
     }
 }
@@ -58,7 +38,14 @@ public class Matrix_Multiplication {
 
         // Initialize matrix A using multiple threads
         for (int i = 0; i < a.length; i++) {
-            Initialize one_thread = new Initialize(a, i);
+            final int row=i;
+            Runnable Initialize=()->{
+                for (int j = 0; j < a.length; j++) {
+                    a[row][j] = (int) (Math.random() * 11); // Generate elements between 0 and 10
+                }
+            };
+            Thread one_thread = new Thread(Initialize);
+            
             one_thread.start();
             thread_list.add(one_thread);
             if (thread_list.size() == no_of_threads) {
@@ -71,7 +58,14 @@ public class Matrix_Multiplication {
 
         // Initialize matrix B using multiple threads
         for (int i = 0; i < b.length; i++) {
-            Initialize one_thread = new Initialize(b, i);
+            final int row=i;
+            Runnable Initialize=()->{
+                for (int j = 0; j < b.length; j++) {
+                    b[row][j] = (int) (Math.random() * 11); // Generate elements between 0 and 10
+                }
+            };
+            Thread one_thread = new Thread(Initialize);
+            
             one_thread.start();
             thread_list.add(one_thread);
             if (thread_list.size() == no_of_threads) {
