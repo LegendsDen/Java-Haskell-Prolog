@@ -1,0 +1,88 @@
+duplicates.pl---->
+The dupli predicate checks whether a given list contains duplicate elements. 
+It recursively traverses the list and uses the built-in member predicate to detect duplicates.
+
+How It Works
+
+The predicate checks if the head of the list (H) is a member of the tail (T). If a match is found, it immediately returns true (due to the cut operator !).
+If the head is unique, the predicate recursively checks the remaining elements.
+An empty list ([]) does not have duplicates, so it returns false.
+
+
+Running in SWI-Prolog
+
+Save the code in a file named duplicates.pl.
+Open SWI-Prolog and load the file:
+        ?- [duplicates].
+Run queries:    
+        ?- dupli([1, 2, 3, 4, 1]).   
+
+
+
+
+Notes:
+ % is a comment  symbol in prolog , so to use this  use '%' instead .
+ Also , it treats 11 and 11.0 differently , 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sqrt.pl--->
+
+ This Prolog program calculates the square root of a given number using the Newton-Raphson method (also called the Babylonian method). 
+ The algorithm iteratively refines an initial guess until the approximation is within a given accuracy 
+
+ How It Works
+
+The squareroot predicate:
+Takes a number X, an accuracy Accuracy, and returns the Result.
+Uses an initial guess (X / 3) to start the approximation.
+Calls iterate_sqrt/4 to refine the approximation iteratively.
+The iterate_sqrt predicate:
+If the difference between Guess^2 and X is smaller than Accuracy, it stops and returns Guess.
+Otherwise, it refines the guess using the formula:
+Calls itself recursively until the stopping condition is met.
+
+
+
+
+Running in SWI-Prolog
+
+Save the code in a file named sqrt.pl.
+Open SWI-Prolog and load the file:
+?- [sqrt].
+
+
+
+Run queries:  first parameter is whose squareroot we are finding , second on is result storing varable name , and third is accuracy/precision with result we want 
+
+
+?- squareroot(25, Result, 0.0001).
+Result = 5.000000000053722.
+
+?- squareroot(49, Result, 0.001).
+Result = 7.000014247557004.
+
+?- squareroot(2, Result, 0.0001).
+Result = 1.4142156862745099.
+
+
+
+
+Handling Edge Cases
+
+The number X must be greater than zero (X > 0).
+The smaller the Accuracy, the more precise the result will be.
+Large values of X may require more iterations to converge
+
+

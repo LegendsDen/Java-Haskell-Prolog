@@ -1,0 +1,30 @@
+To run SimpsonsRule.java  do the following in terminal which has these files in current directory  ----->
+
+    Enter -> javac SimpsonsRule.java    
+    Next -> java SimpsonsRule <NoofThread>    
+
+    eg. javac SimpsonsRule.java
+        java SimpsonsRule 5
+    
+    NoofThread  >=4 && <=16
+    Output ---> output will be time taken to execute and value of integration with n=1000002  equal partitions  using given no of threads .
+
+
+
+
+
+
+
+
+
+
+
+To run Matrix_Multiplication.java  do the following in terminal which has these files in current directory  ----->
+
+    Enter -> javac Matrix_Multiplication.java    
+    Next -> java Matrix_Multiplication <NoofThread>    
+
+    eg. javac Matrix_Multiplication.java
+        java Matrix_Multiplication 10 
+
+    Output ---> output will be time taken to execute matrix multiplication with size N=1000 using given no of threads .

@@ -1,0 +1,152 @@
+1A --> Square Root Implementation
+Description
+
+    Objective: Define a function to compute the square root of a number with an accuracy of 0.00001.
+    Algorithm Complexity: Should be efficient, typically O(log n) using binary search.
+    Input/Output Example:
+        Input: 23.56
+        Expected Output: 4.85386 (rounded to 5 decimal places)
+    Requirements: Used an efficient algorithm (Binary Search ) to achieve the specified precision.
+
+Implementation Details
+
+The Implementation Uses Binary Search to Find the Square Root, Starting with a Range [0, max(1, x)] and Narrowing It Until the Difference Between the Bounds Is Less Than 0.00001
+Binary Search Overview
+
+
+    Initial Range:
+        The algorithm starts with a range [low, high] where:
+            low = 0 (the smallest possible square root for non-negative numbers)
+            high = max(1, x) (ensures the upper bound is at least 1 and greater than or equal to the square root of x)
+        For example:
+            If x = 23.56, then high = max(1, 23.56) = 23.56.
+            If x = 0.25, then high = max(1, 0.25) = 1.
+        This initial range ensures that the true square root (√x) lies within [0, max(1, x)] for any non-negative x.
+    Narrowing the Range:
+        At each step, the algorithm calculates the midpoint mid = (low + high) / 2.
+        It then checks if mid * mid (mid squared) is:
+            Greater than x: If so, the square root must be less than mid, so update high = mid.
+            Less than or equal to x: If so, the square root must be at least mid, so update low = mid.
+        The process repeats until the range high - low < 0.00001, meaning the difference between the upper and lower bounds is smaller than the desired precision (0.00001).
+    Stopping Condition:
+        The condition high - low < 0.00001 ensures the algorithm stops when the search range is narrow enough to guarantee the result is within 0.000005 of the true square root (since the true value lies halfway in the range).
+        This precision corresponds to 5 decimal places, as 0.00001 means the result is accurate to ±0.000005, which aligns with the requirement of 0.00001 accuracy.
+
+
+Rounding to 5 Decimal Places
+    The implementation includes a roundTo function to ensure the output is rounded to 5 decimal places:
+
+
+How to Run
+
+    Save the following code in a file named SquareRoot.hs
+    Now run   
+    ghc SquareRoot.hs
+    ./SquareRoot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1B-->  Fibonacci Number Implementation
+
+The Implementation Uses Tail Recursion with an Accumulator Pattern to Achieve O(n) Time Complexity
+Tail Recursion and Accumulator Pattern Overview
+
+The Fibonacci function uses tail recursion combined with an accumulator pattern to compute the nth Fibonacci number efficiently. This approach is crucial for achieving O(n) time complexity and avoiding the stack overflow problems of naive recursion.
+
+    Tail Recursion:
+        Tail recursion occurs when the recursive call is the last operation in the function, allowing the compiler to optimize it into a loop (via Tail Call Optimization or TCO in Haskell).
+        In the fib function, the recursive call to fibTail is the final operation in each step, ensuring no additional stack space is needed beyond what’s required for the current call.
+
+    Accumulator Pattern:
+        Instead of recalculating Fibonacci numbers from scratch (as in naive recursion), the accumulator pattern maintains running values of the Fibonacci sequence.
+        Two accumulators are used: a (the previous Fibonacci number) and b (the current Fibonacci number). These are updated at each step to build the sequence iteratively.
+
+    Implementation:
+        The main function fib :: Int -> Int initializes the recursion with fibTail n 0 1, where:
+            n is the position in the sequence (e.g., n = 10 for the 10th Fibonacci number)
+            0 and 1 are the initial values for the first two Fibonacci numbers (F(0) = 0, F(1) = 1)
+        The helper function fibTail takes three parameters:
+            n: the remaining steps (decrements by 1 each recursion)
+            a: the previous Fibonacci number
+            b: the current Fibonacci number
+        The recursion works as follows:
+            Base case: When n = 0, return a (the result).
+            Recursive case: Update a to b and b to a + b, decrement n, and recurse.
+
+    Example for fib 10:
+        Start: fibTail 10 0 1
+        Step 1: fibTail 9 1 1 (a = 1, b = 1, since 0 + 1 = 1)
+        Step 2: fibTail 8 1 2 (a = 1, b = 2, since 1 + 1 = 2)
+        Step 3: fibTail 7 2 3 (a = 2, b = 3, since 1 + 2 = 3)
+        Step 4: fibTail 6 3 5 (a = 3, b = 5, since 2 + 3 = 5)
+        Step 5: fibTail 5 5 8 (a = 5, b = 8, since 3 + 5 = 8)
+        Step 6: fibTail 4 8 13 (a = 8, b = 13, since 5 + 8 = 13)
+        Step 7: fibTail 3 13 21 (a = 13, b = 21, since 8 + 13 = 21)
+        Step 8: fibTail 2 21 34 (a = 21, b = 34, since 13 + 21 = 34)
+        Step 9: fibTail 1 34 55 (a = 34, b = 55, since 21 + 34 = 55)
+        Step 10: fibTail 0 55 89 (a = 55, b = 89, since 34 + 55 = 89)
+        Return 55 (since n = 0, return a).
+
+    This matches the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …, where F(10) = 55.
+
+
+How to Run
+
+    Save the following code in a file named Fibonacci.hs
+    Now run   
+    ghc Fibonacci.hs
+    ./Fibonacci
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1C--> Quick Sort Implementation
+
+Implementation Details
+
+    The implementation uses the quicksort algorithm with the first element as the pivot, partitioning the list into elements less than the pivot and elements greater than or equal to the pivot using list comprehension.
+    The function qsort :: Ord a => [a] -> [a] works with any comparable type (e.g., Int).
+    Time complexity is O(n log n) on average and O(n²) in the worst case (e.g., already sorted lists).
+
+
+How to Run
+
+    Save the following code in a file named QuickSort.hs
+    Now run   
+    ghc QuickSort.hs
+    ./QuickSort
+
+
+
+
+
+
+
+

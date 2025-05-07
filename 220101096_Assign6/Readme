@@ -1,0 +1,123 @@
+Maze Pathfinder System - Prolog Implementation
+Overview
+
+This Prolog program implements a maze pathfinding system using Dijkstra's algorithm to find the shortest path between nodes while avoiding faulty nodes. The system is designed for maze navigation or network routing scenarios where some nodes may be inaccessible.
+Features
+    Shortest Path Calculation: Finds the optimal path between any two valid nodes
+
+    Faulty Node Handling: Dynamically manages inaccessible nodes
+
+    Error Checking: Validates node existence and accessibility
+
+    Interactive Commands: Easy-to-use interface for pathfinding and system management
+
+
+Requirements
+    SWI-Prolog (version 8.2.0 or later recommended)
+    Mazedata.pl file containing maze topology
+
+Installation
+    Place both this program file and your Mazedata.pl in the same directory
+
+
+Loading the Program---->
+['maze_solver.pl', 'Mazedata.pl'].
+
+Available Commands
+
+Path Finding--->
+shortest_path(Start, End, Path).
+
+    Finds and displays the shortest path from Start to End
+
+    Example: shortest_path(0, 70, Path).
+
+Faulty Node Management---->
+add_faulty(Node).
+
+    Marks a node as faulty/inaccessible
+    Example: add_faulty(25).
+
+remove_faulty(Node).
+
+    Removes faulty status from a node
+    Example: remove_faulty(25).
+
+
+
+list_faulty.
+    Lists all currently faulty nodes
+
+cleanup.
+
+    Resets the pathfinder's internal state
+
+    Use after modifying faulty nodes or maze structure
+
+help.
+
+    Displays available commands
+
+Examples
+
+    Find a path while avoiding faulty nodes:
+
+prolog
+?- shortest_path(0, 70, Path).
+Shortest path: 0 -> 1 -> 11 -> 21 -> 22 -> 32 -> 42 -> 52 -> 62 -> 72 -> 71 -> 70
+
+    Add a faulty node and find an alternative path:
+
+prolog
+
+?- add_faulty(22).
+Marked node 22 as faulty.
+
+?- shortest_path(0, 70, Path).
+Shortest path: 0 -> 10 -> 20 -> 30 -> 31 -> 41 -> 51 -> 61 -> 71 -> 70
+
+    List all faulty nodes:
+
+prolog
+
+?- list_faulty.
+Faulty nodes:
+3
+20
+22
+31
+38
+43
+48
+50
+60
+65
+68
+74
+81
+86
+95
+
+
+Error Handling
+The system provides clear error messages for:
+
+    Non-existent nodes
+
+    Attempts to use faulty nodes as start/end points
+
+    Invalid operations on faulty nodes
+    Also gives error for nodes which does not exits/ out of maze.
+    Invalidates for negative nodes 
+
+
+
+Implementation Notes
+
+    Uses Dijkstra's algorithm for guaranteed shortest paths
+
+    Implements dynamic programming with memoization for efficiency
+
+    Maintains consistent state through automatic cache invalidation
+
+    All edges have equal weight (1) for maze navigation

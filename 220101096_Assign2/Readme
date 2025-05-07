@@ -1,0 +1,114 @@
+Banking System Concurrent
+
+This project simulates a banking system with concurrent transactions, supporting operations such as deposits, withdrawals, money transfers, and account management across multiple branches.
+
+Features
+
+Multi-threaded transaction execution
+
+Thread-safe operations using ReentrantLock
+
+Efficient handling of concurrent requests
+
+Simulated bank branches with account management
+Added various banding operation which we can simulate on --->
+0 --->for account balance check 
+1 ---> add money in bank account
+2---->withdraw cash from account 
+3----> transfer money from one account of one branch to another account of same/different branch 
+4----> add customer to a branch of the bank 
+5----> delete account from any branch 
+6----> transfer account 
+
+
+How to Run
+
+To compile and run the banking system, ensure you have BankSystem.java,
+
+Compilation
+javac BankSystem.java
+
+
+Execution
+
+java BankSystem <No_of_Requests>
+
+
+
+Example
+javac BankSystem.java
+java BankSystem 10000
+
+
+Output
+The output will display various transactions such as deposits, withdrawals, and transfers, along with execution time.
+
+
+Explanation
+
+
+Initialization:
+
+The system creates 10 bank branches.
+
+Each branch initializes 10,000 customer accounts with random balances.
+
+Transactions are executed concurrently using multiple threads.
+
+
+
+
+
+
+
+
+
+
+Transaction Processing:
+
+Each transaction (deposit, withdrawal, transfer, etc.) is represented as a task executed by a thread pool.
+Choice of task is done by a random no generator with given proability distribution 
+    if (r <= 0.3) return 0;
+        if (r <= 0.53) return 1;
+        if (r <= 0.76) return 2;
+        if (r <= 0.99) return 3;
+        if (r <= 0.993) return 4;
+        if (r <= 0.996) return 5;
+        return 6;
+ReentrantLock is used to prevent race conditions while modifying account balances.
+
+Money transfers involve locking both source and destination accounts to ensure atomicity.
+
+
+
+
+
+
+
+
+
+
+
+Concurrency Control:
+
+Multiple transactions are processed in parallel using ExecutorService.
+
+Each branch has its own thread pool to handle transactions locally.
+
+Locks are implemented to ensure data consistency while allowing high concurrency.
+
+
+
+
+
+
+
+
+
+Performance Considerations:
+
+The program is optimized to minimize locking overhead.
+
+Transactions are evenly distributed across multiple branches to prevent bottlenecks.
+
+The number of threads is chosen based on system capabilities to maximize throughput.
