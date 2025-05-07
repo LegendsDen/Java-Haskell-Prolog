@@ -61,7 +61,7 @@ cs331-programming-language-lab/
 
 ## 📦 Project Modules
 
-### 🧵 **Assignment 1 – Java Concurrent Programming I**
+### 🧮 **Assignment 1 – Java Concurrent Programming I**
 
 **Implementation**:
 - Developed multi-threaded applications for numerical computation
@@ -78,7 +78,7 @@ cs331-programming-language-lab/
 - Thread synchronization mechanisms
 - Command-line parameter handling
 
-### 🏦 **Assignment 2 – Advanced Java Concurrent Programming**
+### 🧮 **Assignment 2 – Advanced Java Concurrent Programming**
 
 **Implementation**:
 - Simulated a bank transaction system (Guwahati National Bank) with 10^6 users
@@ -111,7 +111,7 @@ cs331-programming-language-lab/
 - Handling of arbitrarily large numbers using Integer type
 - Embedded test cases for verification
 
-### 🌳 **Assignment 4 – Advanced Haskell Programming**
+### 🧮 **Assignment 4 – Advanced Haskell Programming**
 
 **Implementation**:
 - Created interactive program for tree operations in Haskell
@@ -127,7 +127,7 @@ cs331-programming-language-lab/
 - Higher-order functions for tree operations
 - User interaction in purely functional context
 
-### 🔍 **Assignment 5 – Basic Prolog Programming**
+### 🧮 **Assignment 5 – Basic Prolog Programming**
 
 **Implementation**:
 - Explored logic programming fundamentals using Prolog
@@ -142,7 +142,7 @@ cs331-programming-language-lab/
 - Recursive predicate definitions
 - Iterative numerical approximation in logic programming context
 
-### 🗺️ **Assignment 6 – Advanced Prolog Programming**
+### 🧮 **Assignment 6 – Advanced Prolog Programming**
 
 **Implementation**:
 - Created a shortest path solver for maze/grid navigation with faulty nodes
